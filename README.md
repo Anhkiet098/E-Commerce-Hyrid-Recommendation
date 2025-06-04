@@ -105,7 +105,7 @@ graph TD
 
 ## 🤖 Tải mô hình phân tích cảm xúc
 
-Hệ thống sử dụng hai mô hình phân tích cảm xúc được lưu trữ trên Hugging Face:
+Hệ thống sử dụng hai mô hình phân tích cảm xúc được lưu trữ trên Hugging Face (Hugging Face: https://huggingface.co/Anhkiet098) :
 
 1. **Mô hình tiếng Anh** (BERT-base):
    ```bash
