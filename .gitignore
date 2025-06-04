@@ -71,9 +71,9 @@ yarn-error.log*
 *.joblib
 
 # Model files
-model/
-models/
-!models/__init__.py
+# model/
+# models/
+# !models/__init__.py
 
 # Local development settings
 local_settings.py
