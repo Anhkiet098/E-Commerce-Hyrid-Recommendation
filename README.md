@@ -16,6 +16,7 @@ Hệ thống đề xuất sản phẩm thông minh kết hợp nhiều phương 
 - [📦 Cài đặt](#-cài-đặt)
 - [🤖 Tải mô hình phân tích cảm xúc](#-tải-mô-hình-phân-tích-cảm-xúc)
 - [📊 Cấu trúc thư mục](#-cấu-trúc-thư-mục)
+- [📊 Công thức tính điểm Hybrid](#-công-thức-tính-điểm-hybrid)
 - [🚀 Cách sử dụng](#-cách-sử-dụng)
 - [🤝 Đóng góp](#-đóng-góp)
 - [📬 Liên hệ](#-liên-hệ)
@@ -150,6 +151,34 @@ e_commerce_hybrid_recommendation/
 ├── requirements.txt      # Thư viện phụ thuộc
 └── settings.py           # Cấu hình ứng dụng
 ```
+
+## 📊 Công thức tính điểm Hybrid
+
+Hệ thống sử dụng công thức kết hợp nhiều yếu tố để tính điểm đề xuất sản phẩm:
+
+```
+hybrid_score = (w1 * svd_score) + (w2 * content_similarity) + (w3 * price_similarity) + (w4 * user_sentiment)
+```
+
+Trong đó:
+- `svd_score`: Điểm dự đoán từ mô hình SVD (Collaborative Filtering)
+- `content_similarity`: Độ tương đồng về nội dung sản phẩm (Content-based Filtering)
+- `price_similarity`: Độ tương đồng về mức giá so với sở thích người dùng
+- `user_sentiment`: Điểm cảm xúc của người dùng dựa trên đánh giá
+
+### Cấu hình trọng số
+Các trọng số có thể được điều chỉnh trong file `settings.py`:
+
+```python
+HYBRID_SCORE_WEIGHTS = {
+    'svd_score': 0.2,          # Trọng số cho dự đoán từ mô hình SVD
+    'content_similarity': 0.3,  # Trọng số cho độ tương đồng nội dung
+    'price_similarity': 0.3,    # Trọng số cho độ tương đồng giá
+    'user_sentiment': 0.2       # Trọng số cho cảm xúc người dùng
+}
+```
+
+Tổng các trọng số nên bằng 1 để đảm bảo điểm số được chuẩn hóa.
 
 ## 🚀 Cách sử dụng
 

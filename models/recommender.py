@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from surprise import SVD
+from settings import HYBRID_SCORE_WEIGHTS
 
 class ProductRecommender:
     def __init__(self, svd_model, items_df, user_features, tfidf_vectorizer, price_scaler):
@@ -20,6 +21,7 @@ class ProductRecommender:
         self.user_features = user_features
         self.tfidf = tfidf_vectorizer
         self.scaler = price_scaler
+        self.score_weights = HYBRID_SCORE_WEIGHTS
     
     def get_content_based_similarity(self, item_id):
         """Tính độ tương đồng dựa trên nội dung"""
@@ -33,7 +35,7 @@ class ProductRecommender:
         
         Args:
             user_id: ID của người dùng
-            n: S lượng khuyến nghị
+            n: Số lượng khuyến nghị
             
         Returns:
             list: Danh sách các sản phẩm được đề xuất
@@ -57,8 +59,13 @@ class ProductRecommender:
             content_similarity = self.get_content_based_similarity(pred.iid)[0]
             price_similarity = 1 - abs(user_price_pref - item_details['normalized_price'])
             
-            # Kết hợp các điểm số
-            hybrid_score = 0.2 * pred.est + 0.3 * content_similarity + 0.3 * price_similarity + 0.2 * user_sentiment
+            # Kết hợp các điểm số sử dụng trọng số từ cấu hình
+            hybrid_score = (
+                self.score_weights['svd_score'] * pred.est +
+                self.score_weights['content_similarity'] * content_similarity +
+                self.score_weights['price_similarity'] * price_similarity +
+                self.score_weights['user_sentiment'] * user_sentiment
+            )
             
             hybrid_predictions.append((pred.iid, hybrid_score))
         

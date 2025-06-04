@@ -21,6 +21,15 @@ SENTIMENT_LABELS = {
     1: 'Tích cực'
 }
 
+# Hybrid Recommendation Settings
+# hybrid_score = 0.2 * pred.est + 0.3 * content_similarity + 0.3 * price_similarity + 0.2 * user_sentiment
+HYBRID_SCORE_WEIGHTS = {
+    'svd_score': 0.2,          # Weight for SVD model prediction
+    'content_similarity': 0.3,  # Weight for content-based similarity
+    'price_similarity': 0.3,    # Weight for price similarity
+    'user_sentiment': 0.2       # Weight for user sentiment
+}
+
 # Application Settings
 APP_CONFIG = {
     'cache_expiry': 3600,  # Thời gian hết hạn cache (giây)
@@ -36,5 +45,3 @@ MODEL_DIR = os.path.join(BASE_DIR, 'models')
 # Tạo các thư mục nếu chưa tồn tại
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
-
-
