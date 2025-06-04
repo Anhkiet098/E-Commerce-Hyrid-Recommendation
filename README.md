@@ -10,7 +10,6 @@ Hệ thống đề xuất sản phẩm thông minh kết hợp nhiều phương 
 
 ## 📑 Mục lục
 - [🚀 Giới thiệu](#-giới-thiệu)
-- [🏗️ Kiến trúc hệ thống](#️-kiến-trúc-hệ-thống)
 - [✨ Tính năng chính](#-tính-năng-chính)
 - [🛠️ Công nghệ sử dụng](#️-công-nghệ-sử-dụng)
 - [📦 Cài đặt](#-cài-đặt)
@@ -20,36 +19,6 @@ Hệ thống đề xuất sản phẩm thông minh kết hợp nhiều phương 
 - [🚀 Cách sử dụng](#-cách-sử-dụng)
 - [🤝 Đóng góp](#-đóng-góp)
 - [📬 Liên hệ](#-liên-hệ)
-
-## 🏗️ Kiến trúc hệ thống
-
-```mermaid
-graph TD
-    A[Người dùng tương tác] --> B[Giao diện Streamlit]
-    B --> C{Chức năng}
-    C --> D[Đề xuất đơn lẻ]
-    C --> E[Đề xuất nhiều người]
-    C --> F[Phân tích cảm xúc]
-    
-    D --> G[Mô hình Hybrid]
-    E --> G
-    F --> H[Phân tích ngôn ngữ]
-    
-    H --> I[BERT-base - Tiếng Anh]
-    H --> J[PhoBERT - Tiếng Việt]
-    
-    I --> K[Đánh giá cảm xúc]
-    J --> K
-    
-    G --> L[Dữ liệu sản phẩm]
-    G --> M[Lịch sử tương tác]
-    
-    K --> N[Đề xuất sản phẩm]
-    L --> N
-    M --> N
-    
-    N --> O[Hiển thị kết quả]
-```
 
 ## ✨ Tính năng chính
 
